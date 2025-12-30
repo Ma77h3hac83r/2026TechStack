@@ -180,6 +180,60 @@ export const app = activeApps.length === 0 ? initApp() : activeApps[0];
 14. Create `/.firebase` and place the `serviceAccount.json` in the folder.
 15. Update `.env` with details from `serviceAccount.json`.
 
+## GitHub Pages Integration (optional)
+
+1. On GitHub, go to your repository **Settings** -> **Pages** -> Under **Sources**, select **GitHub Actions**.
+
+2. Add the `GITHUB_PAGES_URL=https://username.github.io/repository-name/` to your `.env`.
+
+3. Add the following to your `astro.config.mjs` in the `defineConfig`:
+```mjs
+output: 'static',
+site: process.env.GITHUB_PAGES_URL || '',
+```
+
+4. Create `.github/workflows/deploy.yml` with the following:
+```yml
+name: Deploy to GitHub Pages
+
+on:
+  push:
+    branches: [ main ]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout your repository using git
+        uses: actions/checkout@v4
+      
+      - name: Install, build, and upload your site
+        uses: withastro/action@v2
+        with:
+          path: .
+          node-version: 20
+          package-manager: npm
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
+```
+
+GitHub Actions workflow will now build and deploy the site when pushing to the repo. It can also manually be deployed using `npm run build`.
+
 ## Available Commands
 
 All commands are run from the root of the project, from a terminal:
@@ -193,9 +247,11 @@ All commands are run from the root of the project, from a terminal:
 | `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
 | `npm run astro -- --help` | Get help using the Astro CLI                     |
 
-## 📚 Learn More
+## Learn More
 
 - [Astro Documentation](https://docs.astro.build/)
 - [Tailwind CSS Documentation](https://tailwindcss.com/docs)
 - [Biome Documentation](https://biomejs.dev/)
 - [Firebase Documentation](https://firebase.google.com/docs)
+- [GitHub Pages Documentation](https://docs.github.com/en/pages)
+- [GitHub Actions Documentation](https://github.com/features/actions)
