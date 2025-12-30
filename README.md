@@ -184,12 +184,10 @@ export const app = activeApps.length === 0 ? initApp() : activeApps[0];
 
 1. On GitHub, go to your repository **Settings** -> **Pages** -> Under **Sources**, select **GitHub Actions**.
 
-2. Add the `GITHUB_PAGES_URL=https://username.github.io/repository-name/` to your `.env`.
-
 3. Add the following to your `astro.config.mjs` in the `defineConfig`:
 ```mjs
 output: 'static',
-site: process.env.GITHUB_PAGES_URL || '',
+site: 'https://username.github.io/repositoryname/',
 ```
 
 4. Create `.github/workflows/deploy.yml` with the following:
