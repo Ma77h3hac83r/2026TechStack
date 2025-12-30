@@ -4,15 +4,18 @@ A modern web development stack showcasing **Astro**, **Tailwind CSS**, **Biome**
 
 ## Tech Stack
 
-- **[Astro](https://astro.build/)** - The web framework for content-driven websites. Build faster with less client-side JavaScript.
-- **[Tailwind CSS](https://tailwindcss.com/)** - Utility-first CSS framework for rapidly building custom user interfaces.
-- **[Biome](https://biomejs.dev/)** - Fast formatter and linter for JavaScript, TypeScript, and more. All-in-one toolchain.
-- **[Firebase](https://firebase.google.com/)** - Backend-as-a-Service platform for building web and mobile apps with authentication, database, and more.
+- **[Astro](https://astro.build/)**
+- **[Tailwind CSS](https://tailwindcss.com/)**
+- **[Biome](https://biomejs.dev/)**
+- **[Firebase](https://firebase.google.com/)**
+- **[GitHub Pages](https://docs.github.com/en/pages)** (optional)
+- **[GitHub Actions](https://github.com/features/actions)** (optional)
 
 ## Prerequisites
 
 - Node.js 18+ and npm
 - Firebase account (for Firebase features)
+- GitHub account (for GitHub features)
 
 ## Setup Instructions
 
@@ -180,7 +183,7 @@ export const app = activeApps.length === 0 ? initApp() : activeApps[0];
 14. Create `/.firebase` and place the `serviceAccount.json` in the folder.
 15. Update `.env` with details from `serviceAccount.json`.
 
-## GitHub Pages Integration (optional)
+## GitHub Pages/Actions Integration (optional)
 
 1. On GitHub, go to your repository **Settings** -> **Pages** -> Under **Sources**, select **GitHub Actions**.
 
