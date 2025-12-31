@@ -2,11 +2,13 @@
 
 @layer base {
 	:root {
+		/* Dark space theme colors - inspired by Astro */
 		--color-bg-primary: #0a0a0f;
 		--color-bg-secondary: #0f0f1a;
 		--color-bg-card: rgba(15, 15, 26, 0.8);
 		--color-bg-code: rgba(10, 10, 15, 0.9);
 		
+		/* Light beam colors from rays.png */
 		--color-magenta: #ff00ff;
 		--color-magenta-bright: #ff4dff;
 		--color-yellow: #ffd700;
@@ -19,13 +21,16 @@
 		--color-teal-bright: #00ffcc;
 		--color-gray-light: #e0e0e0;
 		
+		/* Text colors */
 		--color-text-primary: #ffffff;
 		--color-text-secondary: rgba(255, 255, 255, 0.7);
 		--color-text-muted: rgba(255, 255, 255, 0.5);
 		
+		/* Border colors */
 		--color-border: rgba(255, 255, 255, 0.1);
 		--color-border-hover: rgba(255, 255, 255, 0.2);
 		
+		/* Gradient combinations */
 		--gradient-magenta: linear-gradient(135deg, var(--color-magenta), var(--color-purple));
 		--gradient-blue: linear-gradient(135deg, var(--color-blue), var(--color-teal));
 		--gradient-yellow: linear-gradient(135deg, var(--color-yellow), var(--color-yellow-muted));
@@ -33,15 +38,18 @@
 	}
 
 	[data-theme="light"] {
+		/* Light theme colors */
 		--color-bg-primary: #ffffff;
 		--color-bg-secondary: #f8f9fa;
 		--color-bg-card: rgba(255, 255, 255, 0.9);
 		--color-bg-code: rgba(248, 249, 250, 0.95);
 		
+		/* Text colors */
 		--color-text-primary: #1a1a1a;
 		--color-text-secondary: rgba(26, 26, 26, 0.7);
 		--color-text-muted: rgba(26, 26, 26, 0.5);
 		
+		/* Border colors */
 		--color-border: rgba(0, 0, 0, 0.1);
 		--color-border-hover: rgba(0, 0, 0, 0.2);
 	}
@@ -52,6 +60,7 @@
 }
 
 @layer components {
+	/* Base body with space background */
 	.body-base {
 		@apply min-h-screen;
 		background: var(--color-bg-primary);
@@ -71,6 +80,7 @@
 			radial-gradient(circle at 40% 20%, rgba(0, 255, 170, 0.04) 0%, transparent 50%);
 	}
 	
+	/* Starry background effect */
 	.body-base::before {
 		content: '';
 		position: fixed;
@@ -93,6 +103,7 @@
 		z-index: 0;
 	}
 
+	/* Navbar with glassmorphism */
 	.navbar {
 		@apply border-b backdrop-blur-md;
 		background: rgba(15, 15, 26, 0.6);
@@ -154,32 +165,6 @@
 	[data-theme="light"] .navbar-button:hover {
 		background: rgba(0, 0, 0, 0.1);
 		box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-	}
-
-	.navbar-button-icon {
-		padding: 0.625rem;
-	}
-
-	.navbar-button-icon img {
-		width: 1.25rem;
-		height: 1.25rem;
-		display: block;
-	}
-
-	.navbar-button-icon .icon-dark {
-		display: block;
-	}
-
-	.navbar-button-icon .icon-light {
-		display: none;
-	}
-
-	[data-theme="light"] .navbar-button-icon .icon-dark {
-		display: none;
-	}
-
-	[data-theme="light"] .navbar-button-icon .icon-light {
-		display: block;
 	}
 
 	.navbar-nav {
@@ -260,6 +245,7 @@
 		display: none;
 	}
 
+	/* Tech cards with glassmorphism and glow effects - square cards */
 	.tech-card {
 		@apply rounded-2xl p-4 border backdrop-blur-md transition-all duration-300;
 		background: var(--color-bg-card);
@@ -424,6 +410,7 @@
 		border-color: var(--color-border);
 	}
 
+	/* Section with glassmorphism */
 	.section {
 		@apply rounded-2xl p-8 border backdrop-blur-md;
 		background: var(--color-bg-card);
@@ -439,6 +426,7 @@
 		-webkit-text-fill-color: transparent;
 	}
 
+	/* Tab navigation */
 	.tab-nav {
 		@apply flex flex-wrap gap-2 mb-8 border-b;
 		border-color: var(--color-border);
@@ -490,6 +478,7 @@
 		}
 	}
 
+	/* Code blocks with dark theme */
 	.code-block {
 		@apply rounded-xl p-4 mb-4 font-mono text-sm overflow-x-auto;
 		background: var(--color-bg-code);
@@ -509,6 +498,7 @@
 		font-size: 0.875em;
 	}
 
+	/* Typography */
 	.heading-2 {
 		@apply text-2xl font-semibold mb-4 flex items-center gap-2;
 		color: var(--color-text-primary);
@@ -551,9 +541,10 @@
 		text-decoration: underline;
 	}
 
+	/* Container */
 	.container-main {
 		@apply container mx-auto px-6 py-12 max-w-7xl relative z-10;
-		padding-bottom: 100px;
+		padding-bottom: 100px; /* Add space for fixed footer */
 	}
 
 	.section-spacing {
@@ -572,6 +563,7 @@
 		@apply flex flex-row flex-wrap gap-4 justify-center mb-12;
 	}
 
+	/* Utility text colors */
 	.text-primary {
 		color: var(--color-text-primary);
 	}
@@ -600,6 +592,7 @@
 		color: var(--color-yellow);
 	}
 
+	/* Footer */
 	.footer {
 		@apply border-t backdrop-blur-md;
 		background: rgba(15, 15, 26, 0.6);
@@ -624,6 +617,13 @@
 
 	.footer-content {
 		@apply flex flex-col sm:flex-row items-center justify-between gap-4;
+		position: relative;
+	}
+
+	.footer-link-icon {
+		position: absolute;
+		left: 50%;
+		transform: translateX(-50%);
 	}
 
 	.footer-text {
@@ -647,6 +647,42 @@
 		text-decoration: underline;
 	}
 
+	.footer-link-icon {
+		display: inline-flex;
+		align-items: center;
+		position: relative;
+		text-decoration: none;
+	}
+
+	.footer-link-icon img {
+		width: 1.25rem;
+		height: 1.25rem;
+		display: block;
+	}
+
+	.footer-link-icon .icon-dark {
+		display: block;
+	}
+
+	.footer-link-icon .icon-light {
+		display: none;
+	}
+
+	[data-theme="light"] .footer-link-icon .icon-dark {
+		display: none;
+	}
+
+	[data-theme="light"] .footer-link-icon .icon-light {
+		display: block;
+	}
+
+	.footer-link-icon:hover {
+		text-decoration: none;
+		opacity: 0.8;
+		transform: translateX(-50%) scale(1.1);
+	}
+
+	/* Changelog */
 	.changelog {
 		@apply space-y-8;
 	}

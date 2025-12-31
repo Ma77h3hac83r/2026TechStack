@@ -70,3 +70,5 @@ package-lock.json
 # pnpm-lock.yaml
 
 # Markdown files
+TODO.md
+WIKI.md

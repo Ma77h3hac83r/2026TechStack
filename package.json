@@ -11,8 +11,10 @@
   "dependencies": {
     "@tailwindcss/vite": "^4.1.18",
     "astro": "^5.16.6",
+    "canvas-confetti": "^1.9.4",
     "firebase": "^12.7.0",
     "firebase-admin": "^13.6.0",
+    "shiki": "^3.20.0",
     "tailwindcss": "^4.1.18"
   },
   "devDependencies": {
