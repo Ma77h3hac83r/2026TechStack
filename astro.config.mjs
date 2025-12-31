@@ -6,7 +6,8 @@ export default defineConfig({
     assetsPrefix: './',
   },
   output: 'static',
-  site: 'https://ma77h3hac83r.github.io/2026TechStack/',
+  site: 'https://ma77h3hac83r.github.io/',
+  base: '/2026TechStack/',
   vite: {
     plugins: [tailwindcss()],
   },
